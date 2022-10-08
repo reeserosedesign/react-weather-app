@@ -1,0 +1,52 @@
+.currentWeather {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.currentWeather ul {
+  margin-left: 16px;
+  position: relative;
+}
+
+.currentWeather h1 {
+  display: flex;
+  text-align: right;
+}
+
+.currentWeather img {
+  display: inline;
+}
+
+#weather-description {
+  text-transform: capitalize;
+}
+
+.location {
+  text-align: center;
+}
+
+#unit {
+  display: flex;
+  font-size: 24px;
+  font-weight: 400;
+  position: relative;
+  margin-top: -16px;
+}
+
+#unit a {
+  text-decoration: none;
+  color: var(--blue);
+  padding: 0 4px;
+}
+
+.active {
+  color: var(--black) !important;
+  cursor: default;
+  font-weight: 600;
+}
+
+.active:hover {
+  text-decoration: none;
+}

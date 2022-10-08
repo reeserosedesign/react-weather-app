@@ -1,0 +1,11 @@
+#forecast {
+  margin: 32px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.iconGroup {
+  text-align: center;
+}

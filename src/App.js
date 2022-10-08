@@ -1,12 +1,16 @@
-import "./style.css";
-import Weather from "./Weather.js";
+import CurrentWeather from "./CurrentWeather";
+import Forecast from "./Forecast";
+import Search from "./Search";
+import Footer from "./Footer";
+import "./App.css";
 
 export default function App() {
   return (
     <div className="App">
-      <h1>React Weather App</h1>
-      <h2> </h2>
-      <Weather city="Paris" />
+      <CurrentWeather />
+      <Forecast />
+      <Search />
+      <Footer />
     </div>
   );
 }

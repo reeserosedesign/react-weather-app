@@ -1,0 +1,105 @@
+:root {
+  --blue: #4b9edf;
+  --dark-blue: #007ada;
+  --grey: #6a6e72;
+  --black: #3d3732;
+  --border-radius: 10px;
+  --shadow-default: 0 4px 8px rgba(131, 137, 142, 0.2);
+  --shadow-hover: 0 4px 8px rgba(131, 137, 142, 0.4);
+  --transition: 200ms ease-in-out;
+}
+
+body {
+  font-family: "Figtree", sans-serif;
+  color: var(--black);
+}
+
+#backgroundVideo {
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.App {
+  display: block;
+  width: 50vw;
+  background-color: #ffffff90;
+  margin: 24px auto;
+  padding: 24px;
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(4px);
+}
+
+@media only screen and (max-width: 900px) {
+  .App {
+    width: 80vw;
+    margin: 24px auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .App {
+    width: 90vw;
+    margin: 8px;
+    padding: 16px;
+  }
+
+  input[type="submit"] {
+    -webkit-appearance: none;
+  }
+
+  .currentWeather {
+    margin-left: -36px;
+  }
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+p,
+ul {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  font-weight: 400;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+#forecast h3,
+#date-time {
+  color: var(--grey);
+}
+
+.tempHigh {
+  font-weight: 700;
+}
+
+.tempLow {
+  font-weight: 400;
+}
