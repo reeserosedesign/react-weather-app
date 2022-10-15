@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import "./CurrentWeather.css";
 import axios from "axios";
+import FormattedDate from "./FormattedDate.js";
 
-export default function CurrentWeather({ defaultCity }) {
+export default function CurrentWeather(props) {
   const [ready, setReady] = useState(false);
   const [data, setData] = useState(null);
 
   function handleResponse(response) {
     setData({
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      iconDescription: response.data.weather[0].description,
       temperature: Math.round(response.data.main.temp),
       high: Math.round(response.data.main.temp_max),
       low: Math.round(response.data.main.temp_min),
@@ -16,7 +18,7 @@ export default function CurrentWeather({ defaultCity }) {
       wind: Math.round(response.data.wind.speed),
       description: response.data.weather[0].description,
       name: response.data.name,
-      date: "12:00 PM on Wednesday, September 28",
+      date: new Date(response.data.dt * 1000),
     });
     setReady(true);
   }
@@ -27,7 +29,7 @@ export default function CurrentWeather({ defaultCity }) {
         <div className="currentWeather">
           <img
             src={data.icon}
-            alt={data.description}
+            alt={data.iconDescription}
             id="weather-icon"
             width="96px"
           />
@@ -66,7 +68,9 @@ export default function CurrentWeather({ defaultCity }) {
             <span id="weather-description">{data.description}</span> in{" "}
             <span id="city">{data.name}</span>
           </h2>
-          <h3 id="date-time">{data.date}</h3>
+          <p id="date-time">
+            <FormattedDate date={data.date} />
+          </p>
         </div>
       </div>
     );
@@ -74,7 +78,7 @@ export default function CurrentWeather({ defaultCity }) {
     const source = `https://api.openweathermap.org/data/2.5/weather?`;
     const key = `3a94f3778290bfeee61278505dbbe51d`;
     let unit = `imperial`;
-    let url = `${source}q=${defaultCity}&appid=${key}&units=${unit}`;
+    let url = `${source}q=${props.defaultCity}&appid=${key}&units=${unit}`;
     axios.get(url).then(handleResponse);
 
     return `Loading...`;
