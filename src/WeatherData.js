@@ -7,7 +7,11 @@ export default function WeatherData(props) {
   return (
     <div className="topRow">
       <div className="currentWeather">
-        <Icon src={props.data.icon} alt={props.data.iconDescription} />
+        <Icon
+          src={props.data.icon}
+          alt={props.data.iconDescription}
+          size={96}
+        />
         <Temperature
           temp={props.data.temperature}
           tempHigh={props.data.high}
@@ -22,9 +26,9 @@ export default function WeatherData(props) {
           <span id="weather-description">{props.data.description}</span> in{" "}
           <span id="city">{props.data.name}</span>
         </h2>
-        <p id="date-time">
+        <h3 id="date-time">
           <FormattedDate date={props.data.date} />
-        </p>
+        </h3>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function FormattedDate(props) {
+  let now = new Date();
   let days = [
     `Sunday`,
     `Monday`,
@@ -27,7 +28,7 @@ export default function FormattedDate(props) {
   ];
   let month = months[props.date.getMonth()];
   let date = props.date.getDate();
-  let hour = props.date.getHours();
+  let hour = now.getHours();
   let meridian = `AM`;
 
   if (hour < 12) {
@@ -43,7 +44,7 @@ export default function FormattedDate(props) {
     hour = "12";
   }
 
-  let minute = props.date.getMinutes();
+  let minute = now.getMinutes();
 
   if (minute < 10) {
     minute = "0" + minute;
@@ -52,5 +53,5 @@ export default function FormattedDate(props) {
   let time = `${hour}:${minute} ${meridian}`;
   let fullDate = `${day}, ${month} ${date}`;
 
-  return `Last Updated on ${fullDate} at ${time}`;
+  return `${time} on ${fullDate}`;
 }

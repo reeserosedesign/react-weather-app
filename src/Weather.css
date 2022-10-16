@@ -157,4 +157,5 @@ input[type="submit"]:hover {
 
 .loading {
   text-align: center;
+  padding: 32px;
 }

@@ -22,5 +22,7 @@ export default function Icon(props) {
     "50n": "media/mist.svg",
   };
 
-  return <img src={iconMapping[props.src]} alt={props.alt} width="96px" />;
+  return (
+    <img src={iconMapping[props.src]} alt={props.alt} width={props.size} />
+  );
 }

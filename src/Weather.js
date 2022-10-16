@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import LoadingIcons from "react-loading-icons";
-import IconGroup from "./IconGroup.js";
 
 import "./Weather.css";
 import WeatherData from "./WeatherData.js";
+import Forecast from "./Forecast.js";
+import Footer from "./Footer.js";
 
 export default function Weather(props) {
   const [ready, setReady] = useState(false);
   const [data, setData] = useState(null);
-  const [city, setCity] = useState(props.defaultCity);
+  let [city, setCity] = useState(props.defaultCity);
 
   function search() {
     const source = `https://api.openweathermap.org/data/2.5/weather?`;
@@ -28,6 +29,37 @@ export default function Weather(props) {
     setCity(event.target.value);
   }
 
+  function handleClickCurrentLocation(event) {
+    event.preventDefault();
+    function showPosition(position) {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      let apiKey = "96771e971243152d6b8948878c26adde";
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+
+      axios.get(apiUrl).then(handleResponse);
+    }
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+
+  function handleClickParis(event) {
+    event.preventDefault();
+    city = "paris";
+    search(city);
+  }
+
+  function handleClickTokyo(event) {
+    event.preventDefault();
+    city = "tokyo";
+    search(city);
+  }
+
+  function handleClickSydney(event) {
+    event.preventDefault();
+    city = "sydney";
+    search(city);
+  }
+
   function handleResponse(response) {
     setData({
       icon: response.data.weather[0].icon,
@@ -40,6 +72,8 @@ export default function Weather(props) {
       description: response.data.weather[0].description,
       name: response.data.name,
       date: new Date(response.data.dt * 1000),
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
     });
     setReady(true);
   }
@@ -48,19 +82,7 @@ export default function Weather(props) {
     return (
       <div id="react-weather-app">
         <WeatherData data={data} />
-        <div id="forecast">
-          <IconGroup day="Thu" icon="media/clear-day.svg" high="88" low="75" />
-          <IconGroup day="Fri" icon="media/rain.svg" high="74" low="54" />
-          <IconGroup
-            day="Sat"
-            icon="media/few-clouds-day.svg"
-            high="65"
-            low="60"
-          />
-          <IconGroup day="Sun" icon="media/thunder.svg" high="56" low="44" />
-          <IconGroup day="Mon" icon="media/mist.svg" high="45" low="30" />
-          <IconGroup day="Tue" icon="media/snow.svg" high="32" low="19" />
-        </div>
+        <Forecast data={data} />
 
         <div className="bottomRow">
           <form id="form" onSubmit={handleSubmit}>
@@ -77,34 +99,18 @@ export default function Weather(props) {
             ex.
             <span className="cities">
               <ul>
-                <li id="current-location">Current Location</li>
-                <li id="paris">Paris</li>
-                <li id="tokyo">Tokyo</li>
-                <li id="sydney">Sydney</li>
+                <li id="current-location" onClick={handleClickCurrentLocation}>
+                  Current Location
+                </li>
+                <li onClick={handleClickParis}>Paris</li>
+                <li onClick={handleClickTokyo}>Tokyo</li>
+                <li onClick={handleClickSydney}>Sydney</li>
               </ul>
             </span>
           </div>
         </div>
 
-        <div className="footer">
-          <p>
-            <a
-              href="https://github.com/reeserosedesign/react-weather-app"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Open Source Code
-            </a>{" "}
-            by{" "}
-            <a
-              href="https://www.reeserosedesign.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Reese Rose
-            </a>
-          </p>
-        </div>
+        <Footer />
       </div>
     );
   } else {
