@@ -1,0 +1,160 @@
+.currentWeather {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.currentWeather ul {
+  margin-left: 16px;
+  position: relative;
+}
+
+.currentWeather h1 {
+  display: flex;
+  text-align: right;
+}
+
+.currentWeather img {
+  display: inline;
+}
+
+#weather-description {
+  text-transform: capitalize;
+}
+
+.location {
+  text-align: center;
+}
+
+#date-time {
+  padding-top: 8px;
+}
+
+#unit {
+  display: flex;
+  font-size: 24px;
+  font-weight: 400;
+  position: relative;
+  margin-top: -16px;
+}
+
+#unit a {
+  text-decoration: none;
+  color: var(--blue);
+  padding: 0 4px;
+}
+
+.active {
+  color: var(--black) !important;
+  cursor: default;
+  font-weight: 600;
+}
+
+.active:hover {
+  text-decoration: none;
+}
+
+#forecast {
+  margin: 32px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.iconGroup {
+  text-align: center;
+}
+
+.bottomRow {
+  padding: 16px;
+  background-color: #6a6e7220;
+  border-radius: var(--border-radius);
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+input {
+  padding: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+input[type="search"] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+  box-shadow: var(--shadow-default);
+  transition: var(--transition);
+}
+
+input[type="search"]:hover,
+input[type="search"]:active {
+  box-shadow: var(--shadow-hover);
+}
+
+input[type="submit"] {
+  background-color: var(--blue);
+  color: #fff;
+  font-weight: 700;
+  margin-left: 8px;
+  box-shadow: var(--shadow-default);
+  transition: var(--transition);
+}
+
+input[type="submit"]:hover {
+  background-color: var(--dark-blue);
+  box-shadow: var(--shadow-hover);
+  cursor: pointer;
+}
+
+.quickLookup {
+  margin: 16px auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.cities li {
+  display: inline;
+  font-weight: 700;
+  margin: 0 8px;
+  transition: var(--transition);
+}
+
+.cities li:hover {
+  color: var(--dark-blue);
+  cursor: pointer;
+}
+
+.footer {
+  padding-top: 16px;
+  text-decoration: none;
+  transition: var(--transition);
+  text-align: center;
+  color: var(--black);
+}
+
+.footer p {
+  font-size: 12px;
+}
+
+.footer a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.footer a:hover {
+  color: var(--dark-blue);
+}
+
+.loading {
+  text-align: center;
+}
