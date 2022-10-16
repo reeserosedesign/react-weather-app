@@ -30,7 +30,7 @@ export default function Weather(props) {
 
   function handleResponse(response) {
     setData({
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       iconDescription: response.data.weather[0].description,
       temperature: Math.round(response.data.main.temp),
       high: Math.round(response.data.main.temp_max),
@@ -49,12 +49,17 @@ export default function Weather(props) {
       <div id="react-weather-app">
         <WeatherData data={data} />
         <div id="forecast">
-          <IconGroup day="Thu" icon="clear-day.svg" high="88" low="75" />
-          <IconGroup day="Fri" icon="rain.svg" high="74" low="54" />
-          <IconGroup day="Sat" icon="few-clouds-day.svg" high="65" low="60" />
-          <IconGroup day="Sun" icon="thunder.svg" high="56" low="44" />
-          <IconGroup day="Mon" icon="mist.svg" high="45" low="30" />
-          <IconGroup day="Tue" icon="snow.svg" high="32" low="19" />
+          <IconGroup day="Thu" icon="media/clear-day.svg" high="88" low="75" />
+          <IconGroup day="Fri" icon="media/rain.svg" high="74" low="54" />
+          <IconGroup
+            day="Sat"
+            icon="media/few-clouds-day.svg"
+            high="65"
+            low="60"
+          />
+          <IconGroup day="Sun" icon="media/thunder.svg" high="56" low="44" />
+          <IconGroup day="Mon" icon="media/mist.svg" high="45" low="30" />
+          <IconGroup day="Tue" icon="media/snow.svg" high="32" low="19" />
         </div>
 
         <div className="bottomRow">
